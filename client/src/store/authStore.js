@@ -8,6 +8,8 @@ const useAuthStore = create(
       user: null,
       token: null,
       isLoading: false,
+      _hasHydrated: false,
+      setHasHydrated: (val) => set({ _hasHydrated: val }),
 
       login: async (email, password) => {
         set({ isLoading: true });
@@ -48,6 +50,7 @@ const useAuthStore = create(
     {
       name: 'tg-auth',
       onRehydrateStorage: () => (state) => {
+        state?.setHasHydrated(true);
         if (state?.token) {
           api.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
         }

@@ -27,6 +27,8 @@ import useAuthStore from './store/authStore';
 
 function AdminRoute({ children }) {
   const user = useAuthStore((s) => s.user);
+  const hasHydrated = useAuthStore((s) => s._hasHydrated);
+  if (!hasHydrated) return null;
   if (!user || user.role !== 'admin') return <Navigate to="/login?redirect=/admin" replace />;
   return children;
 }

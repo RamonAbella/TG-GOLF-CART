@@ -274,10 +274,10 @@ async function main() {
   await prisma.siteContent.deleteMany();
   await prisma.user.deleteMany();
 
-  const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'admin123', 10);
+  const adminPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'Tgolfcarts123$', 10);
   const admin = await prisma.user.create({
     data: {
-      email: process.env.ADMIN_EMAIL || 'admin@tggolfcarts.com',
+      email: process.env.ADMIN_EMAIL || 'tgolfcarts@gmail.com',
       password: adminPassword,
       name: 'TG Admin',
       role: 'admin',
@@ -351,7 +351,7 @@ async function main() {
   console.log(`✅ ${siteContentItems.length} site content items created`);
 
   console.log('\n🎉 Database seeded successfully!');
-  console.log(`📧 Admin login: ${admin.email} / ${process.env.ADMIN_PASSWORD || 'admin123'}`);
+  console.log(`📧 Admin login: ${admin.email} / ${process.env.ADMIN_PASSWORD || 'Tgolfcarts123$'}`);
 }
 
 main()
