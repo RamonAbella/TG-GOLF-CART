@@ -29,7 +29,7 @@ function AdminRoute({ children }) {
   const user = useAuthStore((s) => s.user);
   const hasHydrated = useAuthStore((s) => s._hasHydrated);
   if (!hasHydrated) return null;
-  if (!user || user.role !== 'admin') return <Navigate to="/login?redirect=/admin" replace />;
+  if (!user || user.role !== 'admin') return <Navigate to="/tg-admin-login?redirect=/admin" replace />;
   return children;
 }
 
@@ -53,7 +53,8 @@ export default function App() {
         <Route path="/services" element={<AppLayout><Services /></AppLayout>} />
         <Route path="/marketplace" element={<AppLayout><Marketplace /></AppLayout>} />
         <Route path="/sell" element={<AppLayout><ListCart /></AppLayout>} />
-        <Route path="/login" element={<AppLayout><Login /></AppLayout>} />
+        <Route path="/login" element={<Navigate to="/" replace />} />
+        <Route path="/tg-admin-login" element={<AppLayout><Login /></AppLayout>} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/admin/inventory" element={<AdminRoute><AdminInventory /></AdminRoute>} />
         <Route path="/admin/bookings" element={<AdminRoute><AdminBookings /></AdminRoute>} />

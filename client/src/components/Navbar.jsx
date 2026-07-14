@@ -77,26 +77,24 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="hidden md:flex items-center gap-4">
-              {user ? (
+              {user?.role === 'admin' && (
                 <div className="relative">
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
                     className="flex items-center gap-2 bg-brand-sage hover:bg-brand-sage/80 px-3 py-2 rounded-lg transition-colors"
                   >
                     <FiUser size={15} className="text-brand-green" />
-                    <span className="text-sm font-medium text-brand-deep">{user.name.split(' ')[0]}</span>
+                    <span className="text-sm font-medium text-brand-deep">Admin</span>
                   </button>
                   {userMenuOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-card-hover border border-gray-100 overflow-hidden">
-                      {user.role === 'admin' && (
-                        <Link
-                          to="/admin"
-                          onClick={() => setUserMenuOpen(false)}
-                          className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-brand-sage text-brand-deep"
-                        >
-                          <FiSettings size={14} /> Admin Dashboard
-                        </Link>
-                      )}
+                      <Link
+                        to="/admin"
+                        onClick={() => setUserMenuOpen(false)}
+                        className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-brand-sage text-brand-deep"
+                      >
+                        <FiSettings size={14} /> Admin Dashboard
+                      </Link>
                       <button
                         onClick={handleLogout}
                         className="w-full flex items-center gap-2 px-4 py-3 text-sm hover:bg-red-50 text-red-600"
@@ -106,25 +104,19 @@ export default function Navbar() {
                     </div>
                   )}
                 </div>
-              ) : (
-                <>
-                  <Link to="/login" className="text-[13px] font-medium transition-colors" style={{ color: '#8a9e85' }}>
-                    Sign In
-                  </Link>
-                  <a
-                    href="tel:7863952805"
-                    className="flex items-center gap-2 text-white text-[14px] font-semibold rounded-md transition-all hover:opacity-90"
-                    style={{
-                      background: '#4a6741',
-                      padding: '11px 26px',
-                      letterSpacing: '0.03em',
-                      boxShadow: '0 4px 14px rgba(74,103,65,0.28)',
-                    }}
-                  >
-                    <FiPhone size={14} /> (786) 395-2805
-                  </a>
-                </>
               )}
+              <a
+                href="tel:7863952805"
+                className="flex items-center gap-2 text-white text-[14px] font-semibold rounded-md transition-all hover:opacity-90"
+                style={{
+                  background: '#4a6741',
+                  padding: '11px 26px',
+                  letterSpacing: '0.03em',
+                  boxShadow: '0 4px 14px rgba(74,103,65,0.28)',
+                }}
+              >
+                <FiPhone size={14} /> (786) 395-2805
+              </a>
             </div>
 
             {/* Mobile menu button */}
@@ -155,13 +147,11 @@ export default function Navbar() {
               </NavLink>
             ))}
             <div className="pt-2 border-t border-gray-100">
-              {user ? (
+              {user?.role === 'admin' && (
                 <>
-                  {user.role === 'admin' && (
-                    <Link to="/admin" onClick={() => setOpen(false)} className="block px-4 py-3 text-sm font-medium text-brand-green">
-                      Admin Dashboard
-                    </Link>
-                  )}
+                  <Link to="/admin" onClick={() => setOpen(false)} className="block px-4 py-3 text-sm font-medium text-brand-green">
+                    Admin Dashboard
+                  </Link>
                   <button
                     onClick={() => { handleLogout(); setOpen(false); }}
                     className="w-full text-left px-4 py-3 text-sm font-medium text-red-600"
@@ -169,10 +159,6 @@ export default function Navbar() {
                     Logout
                   </button>
                 </>
-              ) : (
-                <Link to="/login" onClick={() => setOpen(false)} className="block text-center text-white font-semibold py-3 rounded-lg text-sm" style={{ background: '#4a6741' }}>
-                  Sign In
-                </Link>
               )}
             </div>
           </div>

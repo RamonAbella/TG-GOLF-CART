@@ -4,21 +4,9 @@ const jwt = require('jsonwebtoken');
 const prisma = require('../lib/prisma');
 const { authenticate } = require('../middleware/auth');
 
-router.post('/register', async (req, res) => {
-  const { name, email, password, phone } = req.body;
-  if (!name || !email || !password) return res.status(400).json({ error: 'Name, email, and password required' });
-
-  try {
-    const existing = await prisma.user.findUnique({ where: { email } });
-    if (existing) return res.status(400).json({ error: 'Email already registered' });
-
-    const hashed = await bcrypt.hash(password, 10);
-    const user = await prisma.user.create({ data: { name, email, password: hashed, phone } });
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
-    res.status(201).json({ token, user: { id: user.id, name: user.name, email: user.email, role: user.role } });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+// Public registration is disabled — admin-only site
+router.post('/register', (req, res) => {
+  res.status(403).json({ error: 'Registration is not available.' });
 });
 
 router.post('/login', async (req, res) => {
