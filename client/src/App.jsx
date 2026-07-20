@@ -24,13 +24,19 @@ import AdminAnalytics from './pages/admin/Analytics';
 import AdminEmails from './pages/admin/Emails';
 import AdminTools from './pages/admin/AdminTools';
 import useAuthStore from './store/authStore';
+import SEO from './components/SEO';
 
 function AdminRoute({ children }) {
   const user = useAuthStore((s) => s.user);
   const hasHydrated = useAuthStore((s) => s._hasHydrated);
   if (!hasHydrated) return null;
   if (!user || user.role !== 'admin') return <Navigate to="/tg-admin-login?redirect=/admin" replace />;
-  return children;
+  return (
+    <>
+      <SEO title="Admin" path="/admin" noindex />
+      {children}
+    </>
+  );
 }
 
 function AppLayout({ children }) {

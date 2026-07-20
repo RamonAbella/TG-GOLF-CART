@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FiZap, FiShoppingBag, FiTool, FiSettings, FiCheck, FiArrowRight } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import api from '../lib/api';
+import SEO from '../components/SEO';
 
 const ALLOWED_TYPES = ['battery_conversion', 'battery_sale'];
 
@@ -56,6 +57,11 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Lithium Battery Conversions & Golf Cart Services"
+        description="Professional lithium battery conversions, battery sales, installation, and maintenance for golf carts in Key Biscayne and Miami."
+        path="/services"
+      />
       <div className="bg-brand-green text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-green-300 text-sm font-medium mb-2">Expert Service</div>

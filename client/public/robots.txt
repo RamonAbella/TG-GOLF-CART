@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /tg-admin-login
+
+Sitemap: https://tggolfcarts.com/sitemap.xml

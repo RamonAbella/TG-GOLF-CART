@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FiMail, FiLock } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import useAuthStore from '../store/authStore';
+import SEO from '../components/SEO';
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -22,6 +23,7 @@ export default function Login() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center bg-gray-50 py-12 px-4">
+      <SEO title="Admin Login" path="/tg-admin-login" noindex />
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <div className="w-12 h-12 bg-brand-green rounded-xl flex items-center justify-center mx-auto mb-4">

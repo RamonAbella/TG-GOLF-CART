@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FiCheck } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import api from '../lib/api';
+import SEO from '../components/SEO';
 
 export default function ListCart() {
   const [form, setForm] = useState({
@@ -37,6 +38,11 @@ export default function ListCart() {
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
+      <SEO
+        title="Sell Your Golf Cart"
+        description="List your golf cart for sale on TG Golf Carts' marketplace. Free listing, reach buyers across Miami-Dade, reviewed within 24 hours."
+        path="/sell"
+      />
       <div className="max-w-2xl mx-auto px-4">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-semibold tracking-tight text-brand-deep mb-2">List Your Golf Cart</h1>

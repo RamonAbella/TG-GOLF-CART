@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../lib/api';
 import CartCard from '../components/CartCard';
+import SEO from '../components/SEO';
 
 const WHY_CARDS = [
   {
@@ -93,6 +94,11 @@ export default function Home() {
 
   return (
     <div style={{ fontFamily: 'Roboto, sans-serif', color: '#3d4a3a' }}>
+      <SEO
+        title="Golf Cart Rentals in Key Biscayne, FL"
+        description="TG Golf Carts — Key Biscayne's premier golf cart rental, lithium battery conversion, and marketplace. Best prices in Miami."
+        path="/"
+      />
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden" style={{ background: '#2d4229', padding: '72px 0 80px' }}>

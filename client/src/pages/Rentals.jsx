@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { FiFilter, FiSearch } from 'react-icons/fi';
 import api from '../lib/api';
 import CartCard from '../components/CartCard';
+import SEO from '../components/SEO';
 
 const typeOptions = [
   { value: '', label: 'All Types' },
@@ -44,6 +45,11 @@ export default function Rentals() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Golf Cart Rentals"
+        description="Browse our full fleet of golf carts for daily, weekly, and monthly rental in Key Biscayne and Miami. Electric and lithium models available."
+        path="/rentals"
+      />
       {/* Header */}
       <div className="bg-brand-green text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

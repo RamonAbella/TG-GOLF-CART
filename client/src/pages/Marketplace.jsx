@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch, FiFilter, FiMapPin, FiPhone, FiMail, FiArrowRight, FiTag } from 'react-icons/fi';
 import api from '../lib/api';
+import SEO from '../components/SEO';
 
 const conditionColors = {
   excellent: 'bg-green-100 text-green-700',
@@ -105,6 +106,11 @@ export default function Marketplace() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Golf Cart Marketplace"
+        description="Buy and sell golf carts in Key Biscayne and Miami. Verified listings, fair prices, and lithium conversions available on any purchase."
+        path="/marketplace"
+      />
       {/* Hero */}
       <div className="bg-brand-deep text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
