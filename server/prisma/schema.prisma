@@ -207,6 +207,19 @@ model Expense {
   createdAt   DateTime @default(now())
 }
 
+model PageView {
+  id        String   @id @default(cuid())
+  path      String
+  referrer  String?
+  sessionId String
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path])
+  @@index([sessionId])
+}
+
 model EmailTemplate {
   id        String   @id @default(cuid())
   name      String

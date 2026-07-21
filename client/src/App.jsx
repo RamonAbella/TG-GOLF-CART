@@ -1,7 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { trackPageView } from './lib/track';
 import Home from './pages/Home';
 import Rentals from './pages/Rentals';
 import Services from './pages/Services';
@@ -9,6 +11,7 @@ import Marketplace from './pages/Marketplace';
 import ListCart from './pages/ListCart';
 import Login from './pages/Login';
 import AdminDashboard from './pages/admin/Dashboard';
+import AdminTraffic from './pages/admin/Traffic';
 import AdminInventory from './pages/admin/Inventory';
 import AdminBookings from './pages/admin/Bookings';
 import AdminServices from './pages/admin/Services';
@@ -40,6 +43,12 @@ function AdminRoute({ children }) {
 }
 
 function AppLayout({ children }) {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname);
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -62,6 +71,7 @@ export default function App() {
         <Route path="/login" element={<Navigate to="/" replace />} />
         <Route path="/tg-admin-login" element={<AppLayout><Login /></AppLayout>} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
+        <Route path="/admin/traffic" element={<AdminRoute><AdminTraffic /></AdminRoute>} />
         <Route path="/admin/inventory" element={<AdminRoute><AdminInventory /></AdminRoute>} />
         <Route path="/admin/bookings" element={<AdminRoute><AdminBookings /></AdminRoute>} />
         <Route path="/admin/services" element={<AdminRoute><AdminServices /></AdminRoute>} />

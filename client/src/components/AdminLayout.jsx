@@ -1,9 +1,10 @@
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { FiGrid, FiList, FiCalendar, FiTool, FiShoppingCart, FiLogOut, FiArrowLeft, FiSettings, FiEdit, FiUsers, FiFileText, FiTrendingUp, FiDollarSign, FiUserCheck, FiMail, FiSliders } from 'react-icons/fi';
+import { FiGrid, FiList, FiCalendar, FiTool, FiShoppingCart, FiLogOut, FiArrowLeft, FiSettings, FiEdit, FiUsers, FiFileText, FiTrendingUp, FiDollarSign, FiUserCheck, FiMail, FiSliders, FiActivity } from 'react-icons/fi';
 import useAuthStore from '../store/authStore';
 
 const navItems = [
   { to: '/admin', icon: <FiGrid size={18} />, label: 'Dashboard', end: true },
+  { to: '/admin/traffic', icon: <FiActivity size={18} />, label: 'Traffic' },
   { to: '/admin/inventory', icon: <FiList size={18} />, label: 'Golf Carts' },
   { to: '/admin/bookings', icon: <FiCalendar size={18} />, label: 'Bookings' },
   { to: '/admin/services-manage', icon: <FiTool size={18} />, label: 'Services' },
